@@ -9,17 +9,31 @@ import javax.persistence.Id;
 public class CriminalCase {
     @Id
     @GeneratedValue
-    private long id;
+    private int id;
     @Column(nullable = false)
     private String name;
     @Column(nullable = false)
     private long time;
 
-    public long getId() {
+    public CriminalCase(String name, long time) {
+        this.name = name;
+        this.time = time;
+    }
+
+    @Override
+    public String toString() {
+        return "CriminalCase{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", time=" + time +
+                '}';
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
