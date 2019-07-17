@@ -40,6 +40,7 @@ public class CriminalCaseRepositoryTest {
 
     @Test
     public void should_return_all_list_by_time_desc_when_query_all_cases(){
-
+        List<CriminalCase> criminalCases = criminalCaseRepository.findAllByOrderByCaseTimeDesc();
+        assertEquals(true, criminalCases.get(0).getCaseTime()>criminalCases.get(1).getCaseTime());
     }
 }

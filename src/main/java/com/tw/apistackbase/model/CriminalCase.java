@@ -13,11 +13,11 @@ public class CriminalCase {
     @Column(nullable = false)
     private String name;
     @Column(nullable = false)
-    private long time;
+    private long caseTime;
 
-    public CriminalCase(String name, long time) {
+    public CriminalCase(String name, long caseTime) {
         this.name = name;
-        this.time = time;
+        this.caseTime = caseTime;
     }
 
     @Override
@@ -25,7 +25,7 @@ public class CriminalCase {
         return "CriminalCase{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", time=" + time +
+                ", time=" + caseTime +
                 '}';
     }
 
@@ -45,11 +45,11 @@ public class CriminalCase {
         this.name = name;
     }
 
-    public long getTime() {
-        return time;
+    public long getCaseTime() {
+        return caseTime;
     }
 
-    public void setTime(long time) {
-        this.time = time;
+    public void setCaseTime(long caseTime) {
+        this.caseTime = caseTime;
     }
 }
