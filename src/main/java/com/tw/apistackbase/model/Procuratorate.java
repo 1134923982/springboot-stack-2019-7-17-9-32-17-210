@@ -1,14 +1,15 @@
 package com.tw.apistackbase.model;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-
+@Entity
 public class Procuratorate {
     @Id
     @GeneratedValue
     private int id;
-    @Column(nullable = false,length = 50)
+    @Column(nullable = false,length = 50,unique = true)
     private String name;
 
     public Procuratorate(String name) {

@@ -2,6 +2,7 @@ package com.tw.apistackbase.repository;
 
 import com.tw.apistackbase.model.CaseInformation;
 import com.tw.apistackbase.model.CriminalCase;
+import com.tw.apistackbase.model.Procuratorate;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -70,5 +71,14 @@ public class CriminalCaseRepositoryTest {
         criminalCase.setCaseInformation(caseInformation);
         CriminalCase save = criminalCaseRepository.save(criminalCase);
         assertEquals(save,criminalCase);
+    }
+
+    @Test
+    public void should_return_procuratorate_in_criminal_case_when_add_procuratorate_to_criminal_case(){
+        CriminalCase criminalCase = new CriminalCase("hack", 40000);
+        criminalCase.setProcuratorate(new Procuratorate("changsha"));
+        CriminalCase save = criminalCaseRepository.save(criminalCase);
+        assertEquals(criminalCase,save);
+
     }
 }
