@@ -26,6 +26,7 @@ public class CriminalCaseRepositoryTest {
         List<CriminalCase> criminalCases = new ArrayList<>();
         criminalCases.add(new CriminalCase("hello", 1000));
         criminalCases.add(new CriminalCase("kill", 2000));
+        criminalCases.add(new CriminalCase("hello", 2000));
         criminalCaseRepository.saveAll(criminalCases);
     }
 
@@ -37,10 +38,18 @@ public class CriminalCaseRepositoryTest {
     }
 
     @Test
-    public void should_return_all_list_by_time_desc_when_query_all_cases(){
+    public void should_return_all_cases_by_time_desc_when_query_all_cases(){
         List<CriminalCase> criminalCases = criminalCaseRepository.findAllByOrderByCaseTimeDesc();
         long[] cases = criminalCases.stream().mapToLong(CriminalCase::getCaseTime).toArray();
         long[] expectedCases = criminalCases.stream().mapToLong(CriminalCase::getCaseTime).boxed().sorted(Comparator.reverseOrder()).mapToLong(Long::longValue).toArray();
         Assert.assertArrayEquals(cases,expectedCases);
+    }
+
+    @Test
+    public void should_return_all_case_by_name_when_query_cases_by_name(){
+        List<CriminalCase> criminalCases = criminalCaseRepository.findAllByName("hello");
+
+        assertEquals("hello",criminalCases.get(0).getName());
+        assertEquals(2,criminalCases.size());
     }
 }
