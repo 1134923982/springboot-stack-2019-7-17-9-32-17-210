@@ -52,4 +52,13 @@ public class CriminalCaseRepositoryTest {
         assertEquals("hello",criminalCases.get(0).getName());
         assertEquals(2,criminalCases.size());
     }
+
+    @Test
+    public void should_return_deleted_case_when_delete_case_by_id(){
+        List<CriminalCase> allCase = criminalCaseRepository.findAll();
+        criminalCaseRepository.deleteById(1);
+        List<CriminalCase> newCases = criminalCaseRepository.findAll();
+
+        assertEquals(allCase.size(),newCases.size()+1);
+    }
 }
