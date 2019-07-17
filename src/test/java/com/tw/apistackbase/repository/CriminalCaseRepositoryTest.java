@@ -1,19 +1,17 @@
 package com.tw.apistackbase.repository;
 
 import com.tw.apistackbase.model.CriminalCase;
-import org.assertj.core.api.Assertions;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -41,6 +39,8 @@ public class CriminalCaseRepositoryTest {
     @Test
     public void should_return_all_list_by_time_desc_when_query_all_cases(){
         List<CriminalCase> criminalCases = criminalCaseRepository.findAllByOrderByCaseTimeDesc();
-        assertEquals(true, criminalCases.get(0).getCaseTime()>criminalCases.get(1).getCaseTime());
+        long[] cases = criminalCases.stream().mapToLong(CriminalCase::getCaseTime).toArray();
+        long[] expectedCases = criminalCases.stream().mapToLong(CriminalCase::getCaseTime).boxed().sorted(Comparator.reverseOrder()).mapToLong(Long::longValue).toArray();
+        Assert.assertArrayEquals(cases,expectedCases);
     }
 }
