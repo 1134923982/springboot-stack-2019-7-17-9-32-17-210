@@ -1,5 +1,6 @@
 package com.tw.apistackbase.repository;
 
+import com.tw.apistackbase.model.CaseInformation;
 import com.tw.apistackbase.model.CriminalCase;
 import org.junit.Assert;
 import org.junit.Before;
@@ -60,5 +61,14 @@ public class CriminalCaseRepositoryTest {
         List<CriminalCase> newCases = criminalCaseRepository.findAll();
 
         assertEquals(allCase.size(),newCases.size()+1);
+    }
+
+    @Test
+    public void should_return_criminal_case_with_information_when_add_information_to_case(){
+        CaseInformation caseInformation = new CaseInformation("boring boring","stupid");
+        CriminalCase criminalCase = new CriminalCase("hello mock", 2000);
+        criminalCase.setCaseInformation(caseInformation);
+        CriminalCase save = criminalCaseRepository.save(criminalCase);
+        assertEquals(save,criminalCase);
     }
 }
