@@ -19,11 +19,11 @@ public class CriminalCase {
     @NotNull
     private Procuratorate procuratorate;
 
-//    public CriminalCase(String name, long caseTime, @NotNull Procuratorate procuratorate) {
-//        this.name = name;
-//        this.caseTime = caseTime;
-//        this.procuratorate = procuratorate;
-//    }
+    public CriminalCase(String name, long caseTime, @NotNull Procuratorate procuratorate) {
+        this.name = name;
+        this.caseTime = caseTime;
+        this.procuratorate = procuratorate;
+    }
 
     public CriminalCase() {
     }

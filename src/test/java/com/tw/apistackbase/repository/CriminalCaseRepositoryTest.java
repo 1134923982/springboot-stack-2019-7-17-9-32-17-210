@@ -26,9 +26,9 @@ public class CriminalCaseRepositoryTest {
     @Before
     public void setUp() {
         List<CriminalCase> criminalCases = new ArrayList<>();
-        criminalCases.add(new CriminalCase("hello", 1000));
-        criminalCases.add(new CriminalCase("kill", 2000));
-        criminalCases.add(new CriminalCase("hello", 2000));
+        criminalCases.add(new CriminalCase("hello", 1000, new Procuratorate("changsha")));
+        criminalCases.add(new CriminalCase("kill", 2000, new Procuratorate("state")));
+        criminalCases.add(new CriminalCase("hello", 2000, new Procuratorate("haha")));
         criminalCaseRepository.saveAll(criminalCases);
     }
 
